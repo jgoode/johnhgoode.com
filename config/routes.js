@@ -50,6 +50,11 @@ module.exports.routes = {
     view: 'contact'
   },
 
+  'get /thanks' : {
+    view: 'thanks'
+  },
+
+  'post /submitForm' : 'ContactController.submitForm'
 
   /***************************************************************************
   *                                                                          *

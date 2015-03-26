@@ -1,5 +1,5 @@
 <header id="head" class="secondary"></header>
-<div class="container">
+<div ng-app="ContactModule" class="container" ng-controller="ContactController">
     <ol class="breadcrumb">
         <li></li>
     </ol>
@@ -15,22 +15,22 @@
                 I would love to hear from you. Fill out the simple form below and I will contact you as soon as possible.
             </p>
             <br>
-            <form>
+            <form ng-submit="submitContactForm()" id="contact-form" name="contact">
                 <div class="row">
                     <div class="col-sm-4">
-                        <input class="form-control" type="text" placeholder="Name">
+                        <input class="form-control" type="text" placeholder="Name" ng-model="contactForm.name">
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" type="text" placeholder="Email">
+                        <input class="form-control" type="text" placeholder="Email" ng-model="contactForm.email">
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" type="text" placeholder="Phone">
+                        <input class="form-control" type="text" placeholder="Phone" ng-model="contactForm.phone">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        <textarea placeholder="Type your message here..." class="form-control" rows="9"></textarea>
+                        <textarea placeholder="Type your message here..." class="form-control" rows="9" ng-model="contactForm.message"></textarea>
                     </div>
                 </div>
                 <br>
@@ -39,7 +39,11 @@
                         <!--<label class="checkbox"><input type="checkbox"> Sign up for newsletter</label>-->
                     </div>
                     <div class="col-sm-6 text-right">
-                        <input class="btn btn-default" type="submit" value="Send message">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">
+                            <span ng-show="!contactForm.loading">Submit Message</span>
+                            <span class="overload-loading-spinner fa fa-spinner" ng-show="contactForm.loading"></span>
+                            <span ng-show="contactForm.loading">Sending your message...</span>
+                        </button>
                     </div>
                 </div>
             </form>
